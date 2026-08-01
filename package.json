@@ -1,0 +1,28 @@
+{
+  "name": "prahari-digital-arrest-shield",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "calibrate": "node scripts/calibration.mjs",
+    "score": "node scripts/score-transcript.mjs",
+    "eval": "node eval/run.mjs",
+    "eval:quiet": "node eval/run.mjs --quiet",
+    "eval:surfaces": "node eval/run-surfaces.mjs",
+    "eval:all": "node eval/run.mjs --quiet && node eval/run-surfaces.mjs",
+    "check:persona": "node scripts/check-persona.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tailwindcss": "^4.1.11",
+    "vite": "^6.3.5"
+  }
+}

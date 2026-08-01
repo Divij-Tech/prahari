@@ -1,0 +1,23 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Vite builds a single-page app, so every path has to fall through to index.html
+# or a refresh on any route returns a 404 from Netlify's static host.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# The microphone is required for the live call shield and the adversarial
+# simulation. Netlify serves over HTTPS, which getUserMedia needs, but the
+# permission policy has to allow it explicitly.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Permissions-Policy = "microphone=(self)"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

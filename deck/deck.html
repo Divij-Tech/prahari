@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  @page{size:1920px 1080px;margin:0}
+  html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-family:Inter,system-ui,sans-serif;background:#05070b;color:#eef4ff;
+    letter-spacing:-.011em;-webkit-font-smoothing:antialiased}
+
+  .s{width:1920px;height:1080px;page-break-after:always;break-after:page;
+     position:relative;overflow:hidden;background:#05070b;padding:82px 104px 136px}
+  .s:last-child{page-break-after:auto}
+  .s::before{content:'';position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(1200px 640px at 88% -8%,rgba(56,189,248,.11),transparent 62%),
+               radial-gradient(900px 520px at 4% 104%,rgba(16,185,129,.075),transparent 60%)}
+  .in{position:relative;height:100%;display:flex;flex-direction:column}
+
+  .kick{font-size:19px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#7dd3fc}
+  h1{font-size:112px;font-weight:900;letter-spacing:-.038em;line-height:1}
+  h1 .dev{font-weight:500;color:#94a3b8;margin-left:16px}
+  h2{font-size:60px;font-weight:850;letter-spacing:-.03em;line-height:1.08;margin-top:22px}
+  h2 .a{color:#38bdf8}
+  h2 .g{color:#34d399}
+  h2 .r{color:#fb7185}
+  .lede{margin-top:22px;font-size:26px;font-weight:400;line-height:1.5;color:#94a3b8;max-width:1180px}
+  .lede b{color:#e2e8f0;font-weight:650}
+  .rule{width:84px;height:4px;background:#38bdf8;border-radius:3px;margin:34px 0}
+  /* -80px drops these into the slide's bottom padding, clear of body content */
+  .pn{position:absolute;right:0;bottom:-80px;font:600 17px Inter;color:#334155;letter-spacing:.05em}
+  .brand{position:absolute;left:0;bottom:-80px;font:700 17px Inter;color:#334155;letter-spacing:.14em;text-transform:uppercase}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:52px;margin-top:auto;margin-bottom:auto}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .card{background:rgba(255,255,255,.042);border:1px solid rgba(255,255,255,.1);
+    border-radius:22px;padding:34px 38px}
+  .card h3{font-size:27px;font-weight:750;letter-spacing:-.02em}
+  .card p{margin-top:12px;font-size:20px;line-height:1.5;color:#94a3b8}
+  .card.hi{border-color:rgba(56,189,248,.35);background:rgba(56,189,248,.07)}
+  .card.bad{border-color:rgba(251,113,133,.3);background:rgba(251,113,133,.06)}
+  .card.good{border-color:rgba(52,211,153,.3);background:rgba(52,211,153,.06)}
+
+  .stat{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);
+    border-radius:20px;padding:30px 34px}
+  .stat .n{font-size:60px;font-weight:900;letter-spacing:-.04em;line-height:1}
+  .stat .n.g{color:#34d399}.stat .n.r{color:#fb7185}.stat .n.a{color:#38bdf8}
+  .stat .l{margin-top:12px;font-size:16px;font-weight:650;letter-spacing:.1em;
+    text-transform:uppercase;color:#94a3b8}
+  .stat .sub{margin-top:8px;font-size:16px;color:#64748b}
+
+  table{width:100%;border-collapse:collapse;margin-top:8px}
+  th{text-align:left;font-size:15px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+     color:#64748b;padding:0 0 14px}
+  td{padding:15px 0;border-top:1px solid rgba(255,255,255,.09);font-size:21px;color:#cbd5e1}
+  td.k{font-weight:700;color:#eef4ff;width:34%}
+  td.n{font-family:'JetBrains Mono',monospace;font-weight:700;text-align:right;color:#fff}
+  tr.dim td{color:#64748b}
+
+  .stages{display:flex;flex-direction:column;gap:13px;margin-top:6px}
+  .stg{display:flex;align-items:center;gap:20px;background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.09);border-radius:15px;padding:17px 24px}
+  .stg .i{width:38px;height:38px;flex:none;border-radius:11px;display:grid;place-items:center;
+    font-weight:800;font-size:19px;background:rgba(251,113,133,.16);color:#fb7185}
+  .stg .t{font-size:22px;font-weight:700}
+  .stg .d{font-size:19px;color:#94a3b8;margin-left:auto;text-align:right}
+
+  .shot{border-radius:26px;overflow:hidden;border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 40px 100px rgba(0,0,0,.65);align-self:center}
+  .shot img{display:block;height:620px;width:auto}
+
+  .quote{font-size:34px;font-weight:650;line-height:1.35;color:#eef4ff;
+    border-left:4px solid #38bdf8;padding-left:30px;margin-top:8px}
+  .quote small{display:block;margin-top:14px;font-size:20px;font-weight:500;color:#64748b}
+
+  .pill{display:inline-block;font-size:16px;font-weight:700;letter-spacing:.09em;
+    text-transform:uppercase;padding:8px 16px;border-radius:99px;
+    background:rgba(52,211,153,.13);color:#34d399;border:1px solid rgba(52,211,153,.3)}
+  .pill.r{background:rgba(251,113,133,.12);color:#fb7185;border-color:rgba(251,113,133,.3)}
+  .pill.a{background:rgba(56,189,248,.12);color:#7dd3fc;border-color:rgba(56,189,248,.3)}
+
+  ul{list-style:none;margin-top:6px}
+  li{position:relative;padding-left:32px;font-size:21px;line-height:1.5;color:#cbd5e1;margin-top:16px}
+  li::before{content:'';position:absolute;left:6px;top:12px;width:9px;height:9px;
+    border-radius:50%;background:#38bdf8}
+  li b{color:#eef4ff;font-weight:700}
+  li.no::before{background:#475569}
+  li.no{color:#94a3b8}
+
+  .mono{font-family:'JetBrains Mono',monospace}
+  .src{margin-top:auto;font-size:15px;color:#475569;line-height:1.6}
+</style>
+</head>
+<body>
+
+<!-- 1 · TITLE -->
+<div class="s"><div class="in" style="justify-content:center;text-align:center;align-items:center">
+  <div class="kick">Innovation Challenge 2026 · Theme: AI for Good</div>
+  <h1 style="margin-top:34px">PRAHARI <span class="dev">प्रहरी</span></h1>
+  <div class="rule" style="margin:38px auto"></div>
+  <div style="font-size:42px;font-weight:750;letter-spacing:-.025em">AI Digital Arrest Shield</div>
+  <div class="lede" style="margin-top:18px;text-align:center;font-size:25px">
+    Sub-theme 5 — <b>AI for Smart Forensics &amp; Public Safety</b>
+  </div>
+  <div style="margin-top:56px;display:flex;gap:14px">
+    <span class="pill a">Real-time coercion detection</span>
+    <span class="pill">On-device</span>
+    <span class="pill r">Intervention, not warning</span>
+  </div>
+  <div style="margin-top:64px;font-size:20px;color:#475569">TEAM_PLACEHOLDER</div>
+</div></div>
+
+<!-- 2 · PROBLEM -->
+<div class="s"><div class="in">
+  <div class="kick">The problem</div>
+  <h2>“Digital arrest” does not exist<br>anywhere in Indian law.</h2>
+  <div class="lede">Criminals impersonating police, CBI or RBI hold a victim on a video call for
+    hours, forbid them from hanging up or telling anyone, and take their savings by UPI —
+    where the money <b>cannot be recalled</b>.</div>
+
+  <div class="grid3" style="margin-top:52px">
+    <div class="stat"><div class="n r">₹644 cr</div><div class="l">lost in 2025</div>
+      <div class="sub">₹1,918 cr at the 2024 peak</div></div>
+    <div class="stat"><div class="n">17,264</div><div class="l">reported cases</div>
+      <div class="sub">1,23,672 in 2024</div></div>
+    <div class="stat"><div class="n">46%</div><div class="l">run from abroad</div>
+      <div class="sub">Cambodia · Myanmar · Laos</div></div>
+  </div>
+
+  <div class="card hi" style="margin-top:44px">
+    <h3>Cases fell 86% in 2025 — and that is the argument for this product.</h3>
+    <p>The fall was not produced by better detection. It was produced by a national
+      <b style="color:#e2e8f0">awareness</b> campaign — SMS blasts, caller tunes, Mann Ki Baat.
+      What worked was interrupting victims and telling them what was happening to them.
+      Prahari does that per call, at the moment of risk, instead of hoping they remember a
+      broadcast. ₹644 crore a year is still taken from the people it did not reach.</p>
+  </div>
+
+  <div class="src">Source: Indian Cyber Crime Coordination Centre (I4C) / Ministry of Home Affairs, reported February 2026.
+    Wider context — 28.15 lakh cybercrime complaints and ₹22,495 crore lost across all categories in 2025.</div>
+  <div class="brand">Prahari</div><div class="pn">02</div>
+</div></div>
+
+<!-- 3 · THE GAP -->
+<div class="s"><div class="in">
+  <div class="kick">Why detection is not the problem</div>
+  <h2>Every phone can already warn you.<br><span class="a">Almost nothing interrupts you.</span></h2>
+
+  <div class="grid2" style="margin-top:54px">
+    <div>
+      <div class="card bad">
+        <h3>What exists today</h3>
+        <p>Google, Truecaller and every major bank already flag suspicious calls. Scam call
+          detection is a solved, commoditised problem — and people still lose the money.</p>
+      </div>
+      <div class="card good" style="margin-top:26px">
+        <h3>Why it fails anyway</h3>
+        <p>The scam's entire purpose is to make the victim distrust their own judgement. By the
+          time money moves, a man in a police uniform has spent ninety minutes telling them
+          their family will be arrested tonight.</p>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;justify-content:center">
+      <div class="quote">A notification is not a match for ninety minutes of coercion.
+        Any product that stops at “⚠️ this may be a scam” has already lost.
+        <small>So we did not build a warning. We built an interruption.</small></div>
+    </div>
+  </div>
+  <div class="brand">Prahari</div><div class="pn">03</div>
+</div></div>
+
+<!-- 4 · HOW IT WORKS -->
+<div class="s"><div class="in">
+  <div class="kick">The technical claim</div>
+  <h2>It does not match keywords.<br>It counts <span class="a">co-occurring attack stages</span>.</h2>
+  <div class="lede">Every scam sentence is something a real person could say — a genuine officer
+    really does say <i>“this is Inspector Sharma from Cyber Crime”</i>. What no genuine officer
+    ever does is say that <b>and</b> forbid you from hanging up <b>and</b> ask you to move money.</div>
+
+  <div class="grid2" style="margin-top:40px;gap:60px">
+    <div class="stages">
+      <div class="stg"><div class="i">1</div><div class="t">Authority impersonation</div><div class="d">police · CBI · RBI · TRAI</div></div>
+      <div class="stg"><div class="i">2</div><div class="t">Fear induction</div><div class="d">FIR · laundering · non-bailable</div></div>
+      <div class="stg"><div class="i">3</div><div class="t">Isolation</div><div class="d">“do not tell your family”</div></div>
+      <div class="stg"><div class="i">4</div><div class="t">Control &amp; surveillance</div><div class="d">AnyDesk · fake courtroom</div></div>
+      <div class="stg"><div class="i">5</div><div class="t">Money extraction</div><div class="d">“refundable” verification</div></div>
+    </div>
+    <div>
+      <table>
+        <tr><th>Stages present</th><th style="text-align:right">Multiplier</th></tr>
+        <tr><td class="k">1 — a conversation</td><td class="n">1.00×</td></tr>
+        <tr><td class="k">3 — a pattern</td><td class="n">1.40×</td></tr>
+        <tr><td class="k">5 — a crime</td><td class="n a" style="color:#fb7185">1.90×</td></tr>
+      </table>
+      <div class="card good" style="margin-top:34px">
+        <h3>Trust signals subtract</h3>
+        <p>Genuine callers offer a callback number, state they will never ask for an OTP, and
+          tell you to take your time. Each of those <b style="color:#34d399">lowers</b> the score.
+          This is why it stays silent on real bank calls.</p>
+      </div>
+    </div>
+  </div>
+  <div class="brand">Prahari</div><div class="pn">04</div>
+</div></div>
+
+<!-- 5 · PAUSE PROTOCOL -->
+<div class="s"><div class="in">
+  <div class="kick">The core innovation</div>
+  <h2>The Pause Protocol.<br><span class="r">It takes the screen. It does not ask.</span></h2>
+
+  <div style="display:grid;grid-template-columns:1fr 360px;gap:70px;margin-top:38px;flex:1;align-items:center">
+    <div>
+      <ul>
+        <li><b>A 30-second enforced cooling-off.</b> The dismiss button is disabled. Not a
+          suggestion — a lock.</li>
+        <li><b>One tap to 1930</b>, the real cybercrime helpline, and one tap to a family member
+          with live context about what is happening.</li>
+        <li><b>A three-point verification checklist</b> that must be completed before the screen
+          can be dismissed at all.</li>
+        <li><b>Elderly Protection Mode alerts the guardian automatically</b> — no action required
+          from a victim who is, by design, too frightened to act.</li>
+      </ul>
+      <div class="card hi" style="margin-top:40px">
+        <h3>Why thirty seconds works</h3>
+        <p>Nothing the caller said becomes untrue in thirty seconds. But the scam runs on
+          <b style="color:#e2e8f0">speed and isolation</b> — and this removes both. The guardian
+          gets a ringing phone, not a message. A scammer can talk over a message.</p>
+      </div>
+    </div>
+    <div class="shot"><img src="phone-pause.png" alt="Pause Protocol"></div>
+  </div>
+  <div class="brand">Prahari</div><div class="pn">05</div>
+</div></div>
+
+<!-- 6 · EVIDENCE -->
+<div class="s"><div class="in">
+  <div class="kick">Measured, not asserted</div>
+  <h2>136 labelled cases.<br><span class="g">Zero false alarms.</span></h2>
+
+  <div class="grid3" style="margin-top:46px">
+    <div class="stat"><div class="n g">100%</div><div class="l">precision</div>
+      <div class="sub">0 of 61 genuine cases flagged</div></div>
+    <div class="stat"><div class="n">80%</div><div class="l">recall</div>
+      <div class="sub">60 of 75 frauds caught</div></div>
+    <div class="stat"><div class="n a">25/25 · 12/12</div><div class="l">links · emails</div>
+      <div class="sub">separate corpus, 100% both</div></div>
+  </div>
+
+  <div class="grid2" style="margin-top:46px;gap:48px">
+    <div class="card">
+      <h3>The corpus is adversarial on purpose</h3>
+      <p>61 genuine cases include 24 deliberate hard negatives — a real KYC reminder, a real
+        customs notice, a real FIR acknowledgement, and fraud-awareness messages that quote the
+        scam script <b style="color:#e2e8f0">verbatim</b>. Talking about fraud is not fraud.</p>
+    </div>
+    <div class="card bad">
+      <h3>And it is not an independent benchmark</h3>
+      <p>We wrote both the detector and the corpus, so we treat it as an instrument, not a
+        score. Its value was what it exposed: the first run scored
+        <b style="color:#fb7185">24% recall</b> and revealed four whole scam families the engine
+        had no patterns for. The 15 remaining misses are oblique phrasings — the case for the
+        semantic layer on the roadmap.</p>
+    </div>
+  </div>
+  <div class="src mono" style="margin-top:38px;color:#64748b;font-size:17px">npm run eval &nbsp;·&nbsp; npm run eval:surfaces &nbsp;·&nbsp; npm run calibrate — reproducible from the repo</div>
+  <div class="brand">Prahari</div><div class="pn">06</div>
+</div></div>
+
+<!-- 7 · PRIVACY -->
+<div class="s"><div class="in">
+  <div class="kick">Privacy, ethics, and what we did not build</div>
+  <h2>The detection engine<br><span class="g">never touches the network.</span></h2>
+
+  <div class="grid2" style="margin-top:48px;gap:56px">
+    <div>
+      <ul>
+        <li><b>No audio is transmitted or written to storage.</b> Only a rolling text transcript
+          in memory, discarded when the call ends.</li>
+        <li><b>Gemini is deliberately not load-bearing.</b> It explains decisions the on-device
+          engine has already made. Pull the network cable and Prahari still detects, still
+          interrupts, still alerts the guardian.</li>
+        <li><b>Never asks for an OTP, PIN, password or Aadhaar number</b> — anywhere in the
+          product. It tells users to stop and verify independently.</li>
+        <li><b>Recording affects both parties</b>, so production requires an explicit consent
+          screen and a persistent recording indicator.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="card bad">
+        <h3>Deliberately not built: voice deepfake detection</h3>
+        <p>A classifier we could not train and validate properly in 36 hours would produce
+          <b style="color:#fb7185">false accusations against real family members</b> — worse than
+          not shipping it. It is on the roadmap, not in the demo.</p>
+      </div>
+      <div class="card" style="margin-top:26px">
+        <h3>Also stated honestly</h3>
+        <p>Bank transaction interception is shown as the Pause Protocol screen, not a live
+          integration — that needs a partner. The adversarial simulation sends audio to Google;
+          the protection path does not.</p>
+      </div>
+    </div>
+  </div>
+  <div class="brand">Prahari</div><div class="pn">07</div>
+</div></div>
+
+<!-- 8 · BUSINESS + ROADMAP -->
+<div class="s"><div class="in">
+  <div class="kick">Business model &amp; roadmap</div>
+  <h2>The buyer is not the victim.<br><span class="a">It is their daughter in another city.</span></h2>
+
+  <div class="grid2" style="margin-top:44px;gap:56px">
+    <div>
+      <table>
+        <tr><th>Channel</th><th style="text-align:right">Why it works</th></tr>
+        <tr><td class="k">Family safety plan</td><td>The adult child has the payment method and the motivation</td></tr>
+        <tr><td class="k">Bank &amp; fintech licensing</td><td>Banks carry the reimbursement liability</td></tr>
+        <tr><td class="k">Telecom bundling</td><td>Network-level value-added service</td></tr>
+        <tr class="dim"><td class="k" style="color:#94a3b8">Freemium consumer</td><td>Free detection; Guardian Circle on subscription</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="card hi">
+        <h3>Next, in order</h3>
+        <p style="color:#cbd5e1">
+          <b style="color:#eef4ff">1 ·</b> Android dev build — speakerphone mic capture,
+          <span class="mono" style="font-size:18px">NotificationListenerService</span> for SMS and
+          WhatsApp, Accessibility Service on UPI payment screens.<br><br>
+          <b style="color:#eef4ff">2 ·</b> On-device speech — Whisper-small, Vosk for Hindi.
+          Restores the privacy guarantee end to end.<br><br>
+          <b style="color:#eef4ff">3 ·</b> Semantic layer for oblique phrasings, and continuous
+          ingestion of I4C advisories.<br><br>
+          <b style="color:#eef4ff">4 ·</b> Voice deepfake detection, once it can be validated.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote" style="margin-top:auto">Detection is commoditised.
+    Intervention is not.
+    <small>Prahari · प्रहरी — built for the ten minutes before the transfer.</small></div>
+  <div class="brand">Prahari</div><div class="pn">08</div>
+</div></div>
+
+</body>
+</html>
