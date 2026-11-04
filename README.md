@@ -483,7 +483,7 @@ victim — it is their daughter in another city.
 | | |
 |---|---|
 | **Team ID** | 3028 |
-| **Members** | Divij Chaudhry · Akshaj Gupta |
+| **Member** | Divij Chaudhry |
 
 ---
 
