@@ -321,7 +321,7 @@ scam script verbatim.
 The threshold sweep, per-family recall, per-channel breakdown and a full listing of every
 miss are printed too — the failures matter more than the headline.
 
-**This number is not independent.** We wrote both the detector and the corpus, so treat it
+**This number is not independent.** I wrote both the detector and the corpus, so treat it
 as a development instrument, not a published benchmark. Its value was in what it exposed:
 the first run scored **24% recall**, because the engine had been built for digital arrest
 and had no patterns at all for task scams, loan harassment, impersonation or the UPI
@@ -454,7 +454,7 @@ engine.
   at volume.
 - The simulation is a **development and demo tool**, not part of the shipped product. It
   sends audio to Google; the protection path itself does not.
-- Voice deepfake detection is **not** implemented. A classifier we could not train and
+- Voice deepfake detection is **not** implemented. A classifier I could not train and
   validate properly in 36 hours would produce false accusations against real family
   members — worse than not shipping it. It is on the roadmap, not in the demo.
 - Bank transaction interception is shown as the Pause Protocol screen, not a live bank
